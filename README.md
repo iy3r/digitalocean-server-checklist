@@ -1,6 +1,5 @@
 # DigitalOcean Nodejs Checklist
-Checklist for setting up Node.js on a new DigitalOcean droplet
-```Ubuntu 18.04```
+Checklist for setting up Node.js on a new DigitalOcean ```Ubuntu 18.04``` droplet
 
 - [ ] [Initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
 - [ ] [Install Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04)
