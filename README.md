@@ -7,3 +7,19 @@ Checklist for setting up Node.js on a new DigitalOcean ```Ubuntu 18.04``` drople
 - [ ] [Install Node using NVM](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
 - [ ] [Setup deployment using Git](https://www.youtube.com/watch?v=9qIK8ZC9BnU)
 - [ ] [Install PM2 and setup Nginx as a reverse proxy server](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-18-04)
+
+### Sample post-receive hook for git-based deployment
+
+In file ```/var/repo/example.com.git/hooks/post-receive```
+
+```bash
+#!/bin/sh
+export PATH=/home/user/.nvm/versions/node/v8.11.3/bin:$PATH
+WORK_TREE='/var/www/example.com'
+
+# Checkout source code to work tree
+git --work-tree=$WORK_TREE --git-dir=/var/repo/example.com.git checkout -f
+
+# Run npm install if package.json has changed
+git --work-tree=$WORK_TREE diff-tree -r --name-only --no-commit-id HEAD~1 HEAD | grep --quiet -w package.json && cd $WORK_TREE; npm install
+```
