@@ -23,3 +23,13 @@ git --work-tree=$WORK_TREE --git-dir=/var/repo/example.com.git checkout -f
 # Run npm install if package.json has changed
 git --work-tree=$WORK_TREE diff-tree -r --name-only --no-commit-id HEAD~1 HEAD | grep --quiet -w package.json && cd $WORK_TREE; npm install
 ```
+
+### Setup vim for JS in ~/.vimrc
+```
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set smarttab
+set autoindent
+set smartindent
+```
